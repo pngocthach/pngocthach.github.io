@@ -1,0 +1,20 @@
+# Rename this file to languages.toml to enable multilingual support
+[en]
+    languageName      = "English"
+    languagedirection = "ltr"
+    title             = "Ngoc Thach's Space"
+    weight            = 1
+
+    [en.params]
+        [en.params.sidebar]
+            subtitle = "Software Engineer | Tech Enthusiast"
+
+[vi]
+    languageName      = "Tiếng Việt"
+    languagedirection = "ltr"
+    title             = "Ngoc Thach's Space"
+    weight            = 2
+
+    [vi.params]
+        [vi.params.sidebar]
+            subtitle = "Software Engineer | Tech Enthusiast"
