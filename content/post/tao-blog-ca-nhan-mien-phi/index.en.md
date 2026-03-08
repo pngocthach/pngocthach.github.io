@@ -126,49 +126,49 @@ Waline is a lightweight, open-source comment system that supports anonymous comm
 
    - File content:
 
-     ```html
-     <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
-     <link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
-     <div id="waline" class="waline-container"></div>
-     <style>
-         .waline-container {
-             background-color: var(--card-background);
-             border-radius: var(--card-border-radius);
-             box-shadow: var(--shadow-l1);
-             padding: var(--card-padding);
-             --waline-font-size: var(--article-font-size);
-         }
-         .waline-container .wl-count {
-             color: var(--card-text-color-main);
-         }
-     </style>
+```html
+<script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+   .waline-container {
+         background-color: var(--card-background);
+         border-radius: var(--card-border-radius);
+         box-shadow: var(--shadow-l1);
+         padding: var(--card-padding);
+         --waline-font-size: var(--article-font-size);
+   }
+   .waline-container .wl-count {
+         color: var(--card-text-color-main);
+   }
+</style>
 
-     {{- $permalink := .Permalink -}}
-     {{- with .Site.Params.comments.waline -}}
-     {{- $config := dict "el" "#waline" "dark" `html[data-scheme="dark"]` "path" $permalink -}}
-     {{- $replaceKeys := dict "serverurl" "serverURL" "requiredmeta" "requiredMeta" "wordlimit" "wordLimit" "pagesize" "pageSize" "imageuploader" "imageUploader" "texrenderer" "texRenderer" "turnstilekey" "turnstileKey" -}}
+{{- $permalink := .Permalink -}}
+{{- with .Site.Params.comments.waline -}}
+{{- $config := dict "el" "#waline" "dark" `html[data-scheme="dark"]` "path" $permalink -}}
+{{- $replaceKeys := dict "serverurl" "serverURL" "requiredmeta" "requiredMeta" "wordlimit" "wordLimit" "pagesize" "pageSize" "imageuploader" "imageUploader" "texrenderer" "texRenderer" "turnstilekey" "turnstileKey" -}}
 
-     {{- range $key, $val := . -}}
-         {{- if ne $val nil -}}  
-             {{- $replaceKey := index $replaceKeys $key -}}
-             {{- $k := default $key $replaceKey -}}
+{{- range $key, $val := . -}}
+   {{- if ne $val nil -}}  
+         {{- $replaceKey := index $replaceKeys $key -}}
+         {{- $k := default $key $replaceKey -}}
 
-             {{- $config = merge $config (dict $k $val) -}}
-         {{- end -}}
-     {{- end -}}
+         {{- $config = merge $config (dict $k $val) -}}
+   {{- end -}}
+{{- end -}}
 
-     <script id="waline-config" type="application/json">
-         {{ $config | jsonify | safeJS }}
-     </script>
-     <script>
-         /// Waline client configuration see: https://waline.js.org/en/reference/client.html
-         const walineConfig = JSON.parse(document.getElementById('waline-config').textContent);
-         Waline.init(walineConfig);
-     </script>
-     {{- end -}}
-     ```
+<script id="waline-config" type="application/json">
+   {{ $config | jsonify | safeJS }}
+</script>
+<script>
+   /// Waline client configuration see: https://waline.js.org/en/reference/client.html
+   const walineConfig = JSON.parse(document.getElementById('waline-config').textContent);
+   Waline.init(walineConfig);
+</script>
+{{- end -}}
+```
 
-   - Using `.Permalink` will automatically include the full URL (with domain), so the Waline admin panel displays comments as `https://yourblog.com/p/post-name/` instead of a relative path — making them much easier to identify.
+- Using `.Permalink` will automatically include the full URL (with domain), so the Waline admin panel displays comments as `https://yourblog.com/p/post-name/` instead of a relative path — making them much easier to identify.
 
 ## Step 4: Writing New Posts and Updating Your Blog
 

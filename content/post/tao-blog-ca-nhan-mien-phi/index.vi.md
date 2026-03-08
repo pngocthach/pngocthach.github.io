@@ -126,49 +126,49 @@ Waline là hệ thống comment open-source, nhẹ, hỗ trợ anonymous (commen
 
    - Nội dung file:
 
-     ```html
-     <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
-     <link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
-     <div id="waline" class="waline-container"></div>
-     <style>
-         .waline-container {
-             background-color: var(--card-background);
-             border-radius: var(--card-border-radius);
-             box-shadow: var(--shadow-l1);
-             padding: var(--card-padding);
-             --waline-font-size: var(--article-font-size);
-         }
-         .waline-container .wl-count {
-             color: var(--card-text-color-main);
-         }
-     </style>
+```html
+<script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+   .waline-container {
+         background-color: var(--card-background);
+         border-radius: var(--card-border-radius);
+         box-shadow: var(--shadow-l1);
+         padding: var(--card-padding);
+         --waline-font-size: var(--article-font-size);
+   }
+   .waline-container .wl-count {
+         color: var(--card-text-color-main);
+   }
+</style>
 
-     {{- $permalink := .Permalink -}}
-     {{- with .Site.Params.comments.waline -}}
-     {{- $config := dict "el" "#waline" "dark" `html[data-scheme="dark"]` "path" $permalink -}}
-     {{- $replaceKeys := dict "serverurl" "serverURL" "requiredmeta" "requiredMeta" "wordlimit" "wordLimit" "pagesize" "pageSize" "imageuploader" "imageUploader" "texrenderer" "texRenderer" "turnstilekey" "turnstileKey" -}}
+{{- $permalink := .Permalink -}}
+{{- with .Site.Params.comments.waline -}}
+{{- $config := dict "el" "#waline" "dark" `html[data-scheme="dark"]` "path" $permalink -}}
+{{- $replaceKeys := dict "serverurl" "serverURL" "requiredmeta" "requiredMeta" "wordlimit" "wordLimit" "pagesize" "pageSize" "imageuploader" "imageUploader" "texrenderer" "texRenderer" "turnstilekey" "turnstileKey" -}}
 
-     {{- range $key, $val := . -}}
-         {{- if ne $val nil -}}  
-             {{- $replaceKey := index $replaceKeys $key -}}
-             {{- $k := default $key $replaceKey -}}
+{{- range $key, $val := . -}}
+   {{- if ne $val nil -}}  
+         {{- $replaceKey := index $replaceKeys $key -}}
+         {{- $k := default $key $replaceKey -}}
 
-             {{- $config = merge $config (dict $k $val) -}}
-         {{- end -}}
-     {{- end -}}
+         {{- $config = merge $config (dict $k $val) -}}
+   {{- end -}}
+{{- end -}}
 
-     <script id="waline-config" type="application/json">
-         {{ $config | jsonify | safeJS }}
-     </script>
-     <script>
-         /// Waline client configuration see: https://waline.js.org/en/reference/client.html
-         const walineConfig = JSON.parse(document.getElementById('waline-config').textContent);
-         Waline.init(walineConfig);
-     </script>
-     {{- end -}}
-     ```
+<script id="waline-config" type="application/json">
+   {{ $config | jsonify | safeJS }}
+</script>
+<script>
+   /// Waline client configuration see: https://waline.js.org/en/reference/client.html
+   const walineConfig = JSON.parse(document.getElementById('waline-config').textContent);
+   Waline.init(walineConfig);
+</script>
+{{- end -}}
+```
 
-   - `.Permalink` sẽ tự động lấy full URL (bao gồm domain), giúp admin Waline hiển thị comment dưới dạng `https://yourblog.com/p/bai-viet/` thay vì path tương đối → cực kì dễ nhận biết blog nào.
+- `.Permalink` sẽ tự động lấy full URL (bao gồm domain), giúp admin Waline hiển thị comment dưới dạng `https://yourblog.com/p/bai-viet/` thay vì path tương đối → cực kì dễ nhận biết blog nào.
 
 ## Bước 4: Cách viết bài mới và cập nhật blog
 

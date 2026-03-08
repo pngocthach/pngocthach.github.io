@@ -13,16 +13,37 @@
     You can add your own custom styles here.
 */
 
+body {
+    overflow-x: clip; /* clip cắt bớt phần thừa mà KHÔNG làm vỡ sticky như hidden */
+}
+
+.article-content {
+    word-wrap: break-word;
+    word-break: break-word; /* Tránh các URL dài hoặc đoạn text dài làm tràn lề ngang */
+}
+
 .article-content .highlight {
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100%;
     border-radius: 8px;
+    box-sizing: border-box;
 }
 
 /* Kéo lùi ra nếu nằm trong danh sách list (tuỳ thuộc vào độ thụt của list) */
 .article-content ol .highlight,
 .article-content ul .highlight {
-    margin-left: -2rem;
-    width: calc(100% + 2rem);
+    /* Trên mobile không dùng margin âm để tránh tràn màn hình (horizontal scroll) */
+    margin-left: 0 !important;
+    width: auto !important;
+    max-width: 100% !important;
+}
+
+@media (min-width: 768px) {
+
+    .article-content ol .highlight,
+    .article-content ul .highlight {
+        margin-left: -2rem !important;
+        width: calc(100% + 2rem) !important;
+    }
 }
