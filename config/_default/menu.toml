@@ -22,3 +22,19 @@
 
     [social.params]
         icon = "brand-linkedin"
+
+[[social]]
+    identifier = "rss"
+    name       = "RSS"
+    url        = "/index.xml"
+
+    [social.params]
+        icon = "rss"
+
+[[social]]
+    identifier = "email"
+    name       = "Email"
+    url        = "mailto:phamngocthach13112003@gmail.com"
+
+    [social.params]
+        icon = "mail"
