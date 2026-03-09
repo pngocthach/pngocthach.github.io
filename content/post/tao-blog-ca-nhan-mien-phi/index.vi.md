@@ -6,7 +6,8 @@ description = "Hướng dẫn nhanh thiết lập blog cá nhân với Hugo, Git
 image = ""
 categories = [
     "Tech",
-    "Blog"
+    "Blog",
+    "Tutorial"
 ]
 tags = [
     "hugo",

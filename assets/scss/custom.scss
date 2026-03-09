@@ -14,12 +14,14 @@
 */
 
 body {
-    overflow-x: clip; /* clip cắt bớt phần thừa mà KHÔNG làm vỡ sticky như hidden */
+    overflow-x: clip;
+    /* clip cắt bớt phần thừa mà KHÔNG làm vỡ sticky như hidden */
 }
 
 .article-content {
     word-wrap: break-word;
-    word-break: break-word; /* Tránh các URL dài hoặc đoạn text dài làm tràn lề ngang */
+    word-break: break-word;
+    /* Tránh các URL dài hoặc đoạn text dài làm tràn lề ngang */
 }
 
 .article-content .highlight {
@@ -46,4 +48,14 @@ body {
         margin-left: -2rem !important;
         width: calc(100% + 2rem) !important;
     }
+}
+
+/* Cho iframe PDF trong trang resume full width (tràn qua padding của card) */
+.article-content iframe[src*="thachpn_resume.pdf"] {
+    width: calc(100% + var(--card-padding) * 2) !important;
+    margin-left: calc(var(--card-padding) * -1) !important;
+    max-width: none !important;
+    border-radius: 8px;
+    height: 85vh !important;
+    min-height: 500px !important;
 }

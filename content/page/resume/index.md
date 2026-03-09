@@ -9,9 +9,8 @@ menu:
             icon: file-text
 ---
 
-<iframe src="https://cdn.jsdelivr.net/gh/pngocthach/resume@master/thachpn_resume.pdf"
+<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/pngocthach/resume/master/thachpn_resume.pdf&embedded=true"
         width="100%"
-        height="800px"
         style="border: none;">
 </iframe>
 

@@ -6,7 +6,8 @@ description = "A quick guide to setting up a personal blog with Hugo, GitHub Pag
 image = ""
 categories = [
     "Tech",
-    "Blog"
+    "Blog",
+    "Tutorial"
 ]
 tags = [
     "hugo",
