@@ -1,7 +1,7 @@
 # Rename this file to languages.toml to enable multilingual support
 [en]
-    languageName      = "English"
-    languagedirection = "ltr"
+    label             = "English"
+    direction         = "ltr"
     title             = "Ngoc Thach's Space"
     weight            = 1
 
@@ -10,8 +10,8 @@
             subtitle = "Software Engineer | Tech Enthusiast"
 
 [vi]
-    languageName      = "Tiếng Việt"
-    languagedirection = "ltr"
+    label             = "Tiếng Việt"
+    direction         = "ltr"
     title             = "Ngoc Thach's Space"
     weight            = 2
 
