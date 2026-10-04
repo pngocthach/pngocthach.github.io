@@ -19,10 +19,19 @@ body {
 }
 
 .article-content {
+    font-family: "Bookerly", "Literata", Georgia, serif;
     word-wrap: break-word;
     word-break: break-word;
     /* Tránh các URL dài hoặc đoạn text dài làm tràn lề ngang */
 }
+
+
+.article-content img.meme-image {
+    width: 35vw;
+    max-width: 100%;
+    height: auto;
+}
+
 
 .article-content .highlight {
     margin-left: 0 !important;
